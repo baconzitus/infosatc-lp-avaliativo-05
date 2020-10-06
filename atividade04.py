@@ -66,8 +66,7 @@ def Cadastro():
         #lista_codigo=lista_nome.index(nome)
         codigo=lista_nome.index(nome)
         lista_saldo.append(0)
-        print(codigo)
-        ContaEscolha(codigo)
+
 
 def Depositar(codigo):
     deposito=float(input("\nquanto voce deseja depositar:>"))
@@ -87,10 +86,33 @@ def ConferirSaldo(codigo):
 
 def Trasferir(codigo):
     codigo_trasferencia=int(input("para que conta voce que mandar(codigo da conta enviar para uam conta inexiste resualtara em erro):"))
-    valor_trasferencia=float(input("valor para enviar:"))
-    if valor_trasferencia<=lista_saldo[codigo]:
+    valor_trasferencia=float(input("valor para enviar 0 cancela a operacao:"))
+    if valor_trasferencia<=0:
+        return
+    elif valor_trasferencia<=lista_saldo[codigo]:
         lista_saldo[codigo]+= -valor_trasferencia
         lista_saldo[codigo_trasferencia]+=valor_trasferencia
+    else:
+        print("\nvoce n possui este valor!!!!")
+        return
+
+
+def Login():
+    login_email=input("\ndigiti seu email:>")
+    login_senha=input("digite sua senha:>")
+    if login_email in lista_email:
+        if (login_senha in lista_senha) and (lista_email.index(login_email)==lista_senha.index(login_senha)):
+                ContaEscolha(lista_email.index(login_email))
+        else:
+            print("senha errada digite o email e a senha novamente:")
+            Login()
+    else:
+        print("\nemail nao existe ou n foi cadastrado:")
+        escolha=input("1-tentar novamente  qualquer tecla-voltar:>")
+        if escolha =="1":
+            Login()
+        else:
+            return
 
 def ContaEscolha(codigo):
     while True:
