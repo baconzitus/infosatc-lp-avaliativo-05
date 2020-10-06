@@ -211,11 +211,13 @@ def Administracao():
 
 def Escolha():
     while True:
-        print("1-cadastrar  2-administracao  3-sair ")
+        print("1-cadastrar 2-login 3-administracao  3-sair ")
         escolha = int(input(">"))
         if(escolha==1):
             Cadastro()
         elif(escolha==2):
+            Login()
+        elif(escolha==3):
             Administracao()
         if(escolha==3):
             break
