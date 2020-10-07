@@ -13,7 +13,7 @@ def ConfirmaNome():
             if continuar==1:
                 ConfirmaNome()
             else:
-                return False
+                SystemExit(0)
     return nome
 
 def ConfirmaSenha():
@@ -55,7 +55,7 @@ def Cadastro():
     celular=input("celular:")
     if nome==False or senha==False or email==False:
         print("credenciais incoretas")
-        SystemExit()
+        SystemExit(0)
     else:
         lista_nome.append(nome)
         lista_senha.append(senha)
@@ -211,7 +211,7 @@ def Administracao():
 
 def Escolha():
     while True:
-        print("1-cadastrar 2-login 3-administracao  3-sair ")
+        print("1-cadastrar 2-login 3-administracao  4-sair ")
         escolha = int(input(">"))
         if(escolha==1):
             Cadastro()
@@ -219,7 +219,7 @@ def Escolha():
             Login()
         elif(escolha==3):
             Administracao()
-        if(escolha==3):
+        if(escolha==4):
             break
     return
 #da pra botar valores na lista para testar
